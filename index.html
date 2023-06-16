@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SIESTA: Efficient Online Continual Learning with Sleep.">
+  <meta name="keywords" content="Continual Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIESTA: Efficient Online Continual Learning with Sleep</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SIESTA: Efficient Online Continual Learning with Sleep</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Md Yousuf Harun<sup>1*</sup>,</span>
+            <span class="author-block">
+              Jhair Gallardo<sup>1*</sup>,</span>
+            <span class="author-block">
+              Tyler L. Hayes<sup>1&#8224;</sup>,
+            </span>
+            <span class="author-block">
+              Ronald Kemker<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Christopher Kanan<sup>3</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Rochester Institute of Technology,</span>
+            <span class="author-block"><sup>2</sup>United States Space Force,</span>
+            <span class="author-block"><sup>3</sup>University of Rochester</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <p>
+              [* denotes Equal contribution and &dagger; conveys Now at NAVER LABS Europe]
+            </p>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2303.10725"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!--<span class="link-block">
+                <a href="https://arxiv.org/abs/2303.10725"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>-->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/yousuf907/SIESTA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/siesta.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+      <h2 class="subtitle has-text-centered">
+        <!--<span class="dnerf">SIESTA</span>-->
+        A high-level overview of SIESTA. During the <i>Wake Phase</i>, it transforms raw inputs into 
+        intermediate feature representations using network H. 
+        The inputs are then compressed with tensor quantization and cached. Then, weights 
+        belonging to recently seen classes in network F are updated with a running class mean using the output 
+        vectors from G. Finally, inference is performed on the current sample. 
+        
+        During the <i>Sleep Phase</i>, a 
+        sampler uses a rehearsal policy to choose which examples should be reconstructed from the cached data 
+        for each mini-batch. Then, networks G and F are updated with backpropagation in a supervised manner. 
+        The wake/sleep cycles alternate.
+
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+
+          <p>
+            In supervised continual learning, a deep neural network (DNN) is updated with an ever-growing data stream. 
+            Unlike the offline setting where data is shuffled, we cannot make any distributional assumptions about the data stream. 
+            Ideally, only one pass through the dataset is needed for computational efficiency. 
+            However, existing methods are inadequate and make many assumptions that cannot be made for real-world applications, 
+            while simultaneously failing to improve computational efficiency. 
+          </p>
+
+          <p>
+            In this paper, we do not propose a novel method. Instead, we present SIESTA, an incremental improvement to the 
+            continual learning algorithm REMIND. Unlike REMIND, SIESTA uses a wake/sleep framework for training, which is 
+            well aligned to the needs of on-device learning. SIESTA is far more computationally efficient than existing 
+            methods, enabling continual learning on ImageNet-1K in under 3 hours on a single GPU; moreover, in the 
+            augmentation-free setting it matches the performance of the offline learner, a milestone critical to driving 
+            adoption of continual learning in real-world applications.
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">How Efficient is SIESTA?</h2>
+        <p>
+          Our method, SIESTA, outperforms existing continual learning methods for class-incremental 
+          learning on ImageNet-1K while requiring fewer network updates and using fewer parameters, as 
+          denoted by circle size.
+        </p>
+          <img src="./static/images/summary_plot1.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">SIESTA Achieves <i>"No Forgetting"</i></h2>
+          <p>
+            SIESTA reaches offline performance while outperforming other SOTA methods e.g., DER and REMIND.
+            Chochran’s Q test reveals that there is no significant difference among SIESTA’s 
+            final accuracy for the iid and class incremental settings compared to the offline learner (P = 0.08).
+            Therefore, SIESTA achieves “no forgetting” by matching the performance of the offline model.
+          </p>
+          <img src="./static/images/learning_curve_der_siesta.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">FLOPS in Large-Scale Regime</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              At ImageNet-1K scale, SIESTA yields 1.9X and 4.3X higher GFLOPS than REMIND and DER respectively.
+              In real-world settings, we could potentially have an infinitely long (never ending) data stream, 
+              which would be larger than ImageNet-1K, raising the question:<i>how well do CL models computationally 
+              scale to larger datasets?</i>
+              As size of dataset grows, the gap in GFLOPS between SIESTA and compared methods 
+              grows significantly. Hence SIESTA becomes far more efficient than others in large scale regime.
+            </p>
+            <img src="./static/images/plot_flops.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Sleep Enhances Learning</h2>
+          <p>
+            We ask the question <i>“What is the impact of sleep on SIESTA’s ability to learn and remember?”</i>.
+            After examining the pre-sleep and post-sleep performance of SIESTA on ImageNet-1K,
+            we see that the performance of SIESTA after sleep is consistently higher than before sleep for all increments.
+            Therefore, sleep greatly benefits online continual learning in DNN.
+          </p>
+          <img src="./static/images/sleep_plot3_old.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">Impact of Sleep Length</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              We study the impact of sleep length on SIESTA’s performance by varying the number of updates (m) 
+              during each sleep period, where SIESTA slept every 100 classes. We observe that as sleep length 
+              increases, SIESTA’s performance also increases; however, as the sleep length increases, SIESTA 
+              requires more updates, so we must strike a balance between accuracy and efficiency.
+            </p>
+            <img src="./static/images/sleep_plot4.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Criteria for Efficient CL</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            We argue that a continual learning algorithm should have the following properties:
+          </p>
+            1. It should be capable of online learning and inference in a compute and memory constrained environment
+          <p>
+            2. It should rival (or exceed) an offline learner, regardless of the structure of the training data stream
+          </p>
+          <p>
+            3. It should be significantly more computationally efficient than training from scratch
+          </p>
+          <p>
+            4. It should make no additional assumptions that constrain the supervised learning task, e.g., using task labels during inference.
+          </p>
+          <p>
+            There are several other criteria discussed in another paper. 
+            Check out <a href="https://arxiv.org/abs/2303.18171">How Efficient Are Today’s Continual Learning Algorithms?</a>.
+          </p>
+          <p>
+            Our method, SIESTA, meets all these criteria and thus aligns with real-world applications.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{harun2023siesta,
+  author    = {Harun, Md Yousuf and Gallardo, Jhair and Hayes, Tyler L and Kemker, Ronald and Kanan, Christopher},
+  title     = {SIESTA: Efficient Online Continual Learning with Sleep},
+  journal   = {arXiv preprint arXiv:2303.10725},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/yousuf907" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p> 
+            This website is adapted from <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>,
+              licensed under a <a rel="license"
+                                  href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
