@@ -89,15 +89,6 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <!--<span class="link-block">
-                <a href="https://arxiv.org/abs/2303.10725"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>-->
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/yousuf907/SIESTA"
@@ -117,21 +108,59 @@
   </div>
 </section>
 
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Motivation</h2>
+        <div class="content has-text-justified">
+
+          <p>
+            Most deep neural networks are trained once and then evaluated. 
+            In contrast, continual learning mimics how humans continually learn new knowledge 
+            throughout their lifespan. Most continual learning research has focused on mitigating a phenomenon called 
+            <i>catastrophic forgetting</i>, in which neural networks forget past information. Despite making remarkable progress 
+            toward alleviating catastrophic forgetting, existing algorithms remain compute-intensive and ill-suited for 
+            many resource-constrained real-world applications such as edge devices, mobile phones, robots, AR/VR and virtual assistants. 
+            For continual learning to make a real-world impact, continual learning systems need to provide computational efficiency and 
+            rival traditional offline learning systems retrained from scratch when dataset grows in size.
+          </p>
+
+          <p>
+            Towards that goal, we propose an efficient online continual learning algorithm named <i>SIESTA</i>.
+            SIESTA uses a wake/sleep framework for training, which is 
+            well aligned to the needs of on-device learning. SIESTA is far more computationally efficient than existing 
+            methods, enabling continual learning on ImageNet-1K in under 3 hours on a single GPU; moreover, in the 
+            augmentation-free setting it matches the performance of the offline learner, a milestone critical to driving 
+            adoption of continual learning in real-world applications.
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
+      <h2 class="title is-3">Overview of SIESTA Algorithm</h2>
       <img src="./static/images/siesta.png"
           class="interpolation-image"
           alt="Interpolation end reference image."/>
       <h2 class="subtitle has-text-centered">
         <!--<span class="dnerf">SIESTA</span>-->
-        A high-level overview of SIESTA. During the <i>Wake Phase</i>, it transforms raw inputs into 
-        intermediate feature representations using network H. 
+        A high-level overview of SIESTA. During the <FONT COLOR="#0072b2"><b><i>Wake Phase</i></b></FONT>, 
+        it transforms raw inputs into intermediate feature representations using network H. 
         The inputs are then compressed with tensor quantization and cached. Then, weights 
         belonging to recently seen classes in network F are updated with a running class mean using the output 
         vectors from G. Finally, inference is performed on the current sample. 
         
-        During the <i>Sleep Phase</i>, a 
+        During the <FONT COLOR="#d55e00"><b><i>Sleep Phase</i></b></FONT>, a 
         sampler uses a rehearsal policy to choose which examples should be reconstructed from the cached data 
         for each mini-batch. Then, networks G and F are updated with backpropagation in a supervised manner. 
         The wake/sleep cycles alternate.
@@ -144,34 +173,6 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-
-          <p>
-            In supervised continual learning, a deep neural network (DNN) is updated with an ever-growing data stream. 
-            Unlike the offline setting where data is shuffled, we cannot make any distributional assumptions about the data stream. 
-            Ideally, only one pass through the dataset is needed for computational efficiency. 
-            However, existing methods are inadequate and make many assumptions that cannot be made for real-world applications, 
-            while simultaneously failing to improve computational efficiency. 
-          </p>
-
-          <p>
-            In this paper, we do not propose a novel method. Instead, we present SIESTA, an incremental improvement to the 
-            continual learning algorithm REMIND. Unlike REMIND, SIESTA uses a wake/sleep framework for training, which is 
-            well aligned to the needs of on-device learning. SIESTA is far more computationally efficient than existing 
-            methods, enabling continual learning on ImageNet-1K in under 3 hours on a single GPU; moreover, in the 
-            augmentation-free setting it matches the performance of the offline learner, a milestone critical to driving 
-            adoption of continual learning in real-world applications.
-          </p>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
