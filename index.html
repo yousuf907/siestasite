@@ -132,7 +132,7 @@
             Towards that goal, we propose an efficient online continual learning algorithm named <i>SIESTA</i>.
             SIESTA uses a wake/sleep framework for training, which is 
             well aligned to the needs of on-device learning. SIESTA is far more computationally efficient than existing 
-            methods, enabling continual learning on ImageNet-1K in under 3 hours on a single GPU; moreover, in the 
+            methods, enabling continual learning on ImageNet-1K in under 2.4 hours on a single GPU; moreover, in the 
             augmentation-free setting it matches the performance of the offline learner, a milestone critical to driving 
             adoption of continual learning in real-world applications.
           </p>
@@ -141,6 +141,24 @@
       </div>
     </div>
     <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3">Online Updates with Offline Consolidation: A New Paradigm</h2>
+      <img src="./static/images/Paradigm_siesta.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+      <h2 class="subtitle has-text-centered">       
+        An illustration of <FONT COLOR="#0072b2"><b><i>online updates with offline consolidation</i></b></FONT> paradigm. 
+        While awake, agent performs online learning and while asleep, it performs computationally constrained offline learning. 
+        This wake/sleep cycles oscillate. Thus, proposed paradigm combines two existing paradigms: class incremental 
+        batch learning and online learning.
+      </h2>
+    </div>
   </div>
 </section>
 
@@ -182,7 +200,7 @@
           learning on ImageNet-1K while requiring fewer network updates and using fewer parameters, as 
           denoted by circle size.
         </p>
-          <img src="./static/images/summary_plot1.png"
+          <img src="./static/images/summary_plot2.png"
           class="interpolation-image"
           alt="Interpolation end reference image."/>
       </div>
@@ -202,12 +220,13 @@
         <div class="content">
           <h2 class="title is-3">SIESTA Achieves <i>"No Forgetting"</i></h2>
           <p>
-            SIESTA reaches offline performance while outperforming other SOTA methods e.g., DER and REMIND.
-            Chochran’s Q test reveals that there is no significant difference among SIESTA’s 
-            final accuracy for the iid and class incremental settings compared to the offline learner (P = 0.08).
+            SIESTA matches the performance of the offline model while outperforming existing state-of-the-art methods 
+            e.g., ER, DER, and REMIND by large margins in continual learning on ImageNet-1K dataset.
+            In the augmentation-free setting, Chochran’s Q test reveals that there is no significant difference among SIESTA’s 
+            final accuracy for the continual iid and class incremental settings compared to the offline learner (P = 0.08).
             Therefore, SIESTA achieves “no forgetting” by matching the performance of the offline model.
           </p>
-          <img src="./static/images/learning_curve_der_siesta.png"
+          <img src="./static/images/learning_curve_der_siesta2.png"
           class="interpolation-image"
           alt="Interpolation end reference image."/>
         </div>
@@ -216,18 +235,18 @@
 
       <!-- Matting. -->
       <div class="column">
-        <h2 class="title is-3">FLOPS in Large-Scale Regime</h2>
+        <h2 class="title is-3">Computational Analysis in Large-Scale Dataset Regime</h2>
         <div class="columns is-centered">
           <div class="column content">
             <p>
-              At ImageNet-1K scale, SIESTA yields 1.9X and 4.3X higher GFLOPS than REMIND and DER respectively.
+              At ImageNet-1K scale, SIESTA yields 1.9X, 2.4X, and 14.9X higher GFLOPS than REMIND, DER, and ER respectively.
               In real-world settings, we could potentially have an infinitely long (never ending) data stream, 
               which would be larger than ImageNet-1K, raising the question:<i>how well do CL models computationally 
               scale to larger datasets?</i>
               As size of dataset grows, the gap in GFLOPS between SIESTA and compared methods 
-              grows significantly. Hence SIESTA becomes far more efficient than others in large scale regime.
+              grows significantly. Hence SIESTA becomes far more efficient than others in large-scale dataset regime.
             </p>
-            <img src="./static/images/plot_flops.png"
+            <img src="./static/images/plot_flops_comp.png"
           class="interpolation-image"
           alt="Interpolation end reference image."/>
           </div>
