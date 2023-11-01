@@ -129,12 +129,22 @@
           </p>
 
           <p>
-            Towards that goal, we propose an efficient online continual learning algorithm named <i>SIESTA</i>.
+            Towards that goal, we propose a novel online continual learning algorithm named 
+            <FONT COLOR="#d55e00"><b>SIESTA</b></FONT>
+            (<FONT COLOR="#d55e00"><b>S</b></FONT>leep <FONT COLOR="#d55e00"><b>I</b></FONT>ntegration 
+            for <FONT COLOR="#d55e00"><b>E</b></FONT>pisodic 
+            <FONT COLOR="#d55e00"><b>ST</b></FONT>re<FONT COLOR="#d55e00"><b>A</b></FONT>ming).
             SIESTA uses a wake/sleep framework for training, which is 
-            well aligned to the needs of on-device learning. SIESTA is far more computationally efficient than existing 
-            methods, enabling continual learning on ImageNet-1K in under 2.4 hours on a single GPU; moreover, in the 
-            augmentation-free setting it matches the performance of the offline learner, a milestone critical to driving 
-            adoption of continual learning in real-world applications.
+            well aligned to the needs of on-device learning.
+            The major goal of SIESTA is to advance compute efficient continual learning so that DNNs can 
+            be updated efficiently using far less time and energy. <FONT COLOR="#000000"><b>The principal 
+            innovations of SIESTA are: [1] rapid online updates using a rehearsal-free, backpropagation-free, 
+            and data-driven network update rule during its wake phase, and [2] expedited memory consolidation 
+            using a compute-restricted rehearsal policy during its sleep phase.</b>
+            <FONT COLOR="#0072b2"><b><i>SIESTA is far more computationally efficient than existing 
+              methods, enabling continual learning on ImageNet-1K in under 2 hours on a single GPU; moreover, in the 
+              augmentation-free setting it matches the performance of the offline learner, a milestone critical to driving 
+              adoption of continual learning in real-world applications.</i></b></FONT>
           </p>
 
         </div>
@@ -148,7 +158,142 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <h2 class="title is-3">Online Updates with Offline Consolidation: A New Paradigm</h2>
+      <h2 class="title is-3">SIESTA Outperforms Prior Arts on ImageNet-1K Dataset</h2>
+      <img src="./static/images/siesta_barplot_updated2.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+      <h2 class="subtitle has-text-centered">    
+        <FONT COLOR="#d55e00"><b>SIESTA requires 7x-60x fewer updates, 10x less memory, 2x-20x fewer parameters than other methods.
+        SIESTA requires only 1.9 hours to learn full ImageNet-1K whereas other methods require 
+        many hours or even days on the same hardware!</b></FONT>
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">How Efficient is SIESTA?</h2>
+        <p>
+          Our method, SIESTA, outperforms existing continual learning methods for class-incremental 
+          learning on ImageNet-1K while requiring fewer network updates and using fewer parameters, as 
+          denoted by circle size.
+        </p>
+          <img src="./static/images/summary_plot3.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">SIESTA Achieves <i>"Zero Forgetting"</i> - A Milestone</h2>
+          <p align="justify">
+            SIESTA matches the performance of the offline model while outperforming existing state-of-the-art methods 
+            e.g., ER, DER, and REMIND by large margins in continual learning on ImageNet-1K dataset.
+            In the augmentation-free setting, Chochran’s Q test reveals that there is no significant difference among SIESTA’s 
+            final accuracy for the continual iid and class incremental settings compared to the offline learner (P = 0.08).
+            Therefore, SIESTA achieves “zero forgetting” by matching the performance of the offline model.
+          </p>
+          <img src="./static/images/learning_curve_der_siesta2.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">SIESTA is Capable of Working with Arbitrary Orderings</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p align="justify">
+              In general, iid (shuffled) orderings do not cause catastrophic forgetting; and 
+              at the other extreme, an ordering sorted by category causes severe catastrophic 
+              forgetting in conventional algorithms.
+              When switching from iid to the class incremental setting, existing methods e.g., 
+              ER and REMIND fail to maintain similar performance and intensify forgetting. 
+              In contrast, SIESTA maintains similar performance as offline learner and achieve 
+              "zero forgetting" in both settings, demonstrating its robustness to data ordering.
+            </p>
+            <img src="./static/images/class_incremental_vs_iid.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+
+
+
+    <section class="section">
+      <div class="container is-max-desktop">
+    
+        <div class="columns is-centered">
+    
+          <!-- Visual Effects. -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-3">SIESTA is Performant on Four Benchmark Datasets</h2>
+              <p align="justify">
+                SIESTA outperforms state-of-the-art online continual leanring method, REMIND on four 
+                benchmark datasets. SIESTA learns the large-scale ImageNet-1K dataset (1.2M training 
+                samples) 3.4x faster than REMIND on the same hardware. Moreover, SIESTA provides a 4.4x 
+                speedup compared to REMIND to learn another large-scale dataset, Places365-Standard (1.8M 
+                training samples) using the same hardware.
+              </p>
+              <img src="./static/images/siesta_barplot.png"
+              class="interpolation-image"
+              alt="Interpolation end reference image."/>
+            </div>
+          </div>
+          <!--/ Visual Effects. -->
+    
+          <!-- Matting. -->
+          <div class="column">
+            <h2 class="title is-3">Efficiency in Large-Scale Dataset Regime</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <p align="justify">
+                  <!--At ImageNet-1K scale, SIESTA yields 1.9X, 2.4X, and 14.9X higher GFLOPS than REMIND, DER, and ER respectively.
+                  In real-world settings, we could potentially have an infinitely long (never ending) data stream, 
+                  which would be larger than ImageNet-1K, raising the question:<i>how well do CL models computationally 
+                  scale to larger datasets?</i>-->
+                  As size of dataset grows, the gap in GFLOPS between SIESTA and existing methods 
+                  grows significantly. It is evident that SIESTA becomes far more efficient than others 
+                  in large-scale dataset regime.
+                </p>
+                <img src="./static/images/plot_flops_comp.png"
+              class="interpolation-image"
+              alt="Interpolation end reference image."/>
+              </div>
+    
+            </div>
+          </div>
+        </div>
+        <!--/ Matting. -->
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3">Online Updates with Offline Consolidation</h2>
       <img src="./static/images/Paradigm_siesta.png"
           class="interpolation-image"
           alt="Interpolation end reference image."/>
@@ -156,7 +301,7 @@
         An illustration of <FONT COLOR="#0072b2"><b><i>online updates with offline consolidation</i></b></FONT> paradigm. 
         While awake, agent performs online learning and while asleep, it performs computationally constrained offline learning. 
         This wake/sleep cycles oscillate. Thus, proposed paradigm combines two existing paradigms: class incremental 
-        batch learning and online learning.
+        batch learning and online learning. SIESTA operates in this framework.
       </h2>
     </div>
   </div>
@@ -166,7 +311,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <h2 class="title is-3">Overview of SIESTA Algorithm</h2>
+      <h2 class="title is-3">How Does SIESTA Algorithm Work?</h2>
       <img src="./static/images/siesta.png"
           class="interpolation-image"
           alt="Interpolation end reference image."/>
@@ -189,73 +334,6 @@
 </section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">How Efficient is SIESTA?</h2>
-        <p>
-          Our method, SIESTA, outperforms existing continual learning methods for class-incremental 
-          learning on ImageNet-1K while requiring fewer network updates and using fewer parameters, as 
-          denoted by circle size.
-        </p>
-          <img src="./static/images/summary_plot2.png"
-          class="interpolation-image"
-          alt="Interpolation end reference image."/>
-      </div>
-    </div>
-    <!--/ Paper video. -->
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">SIESTA Achieves <i>"No Forgetting"</i></h2>
-          <p>
-            SIESTA matches the performance of the offline model while outperforming existing state-of-the-art methods 
-            e.g., ER, DER, and REMIND by large margins in continual learning on ImageNet-1K dataset.
-            In the augmentation-free setting, Chochran’s Q test reveals that there is no significant difference among SIESTA’s 
-            final accuracy for the continual iid and class incremental settings compared to the offline learner (P = 0.08).
-            Therefore, SIESTA achieves “no forgetting” by matching the performance of the offline model.
-          </p>
-          <img src="./static/images/learning_curve_der_siesta2.png"
-          class="interpolation-image"
-          alt="Interpolation end reference image."/>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Computational Analysis in Large-Scale Dataset Regime</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              At ImageNet-1K scale, SIESTA yields 1.9X, 2.4X, and 14.9X higher GFLOPS than REMIND, DER, and ER respectively.
-              In real-world settings, we could potentially have an infinitely long (never ending) data stream, 
-              which would be larger than ImageNet-1K, raising the question:<i>how well do CL models computationally 
-              scale to larger datasets?</i>
-              As size of dataset grows, the gap in GFLOPS between SIESTA and compared methods 
-              grows significantly. Hence SIESTA becomes far more efficient than others in large-scale dataset regime.
-            </p>
-            <img src="./static/images/plot_flops_comp.png"
-          class="interpolation-image"
-          alt="Interpolation end reference image."/>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -266,7 +344,7 @@
       <div class="column">
         <div class="content">
           <h2 class="title is-3">Sleep Enhances Learning</h2>
-          <p>
+          <p align="justify">
             We ask the question <i>“What is the impact of sleep on SIESTA’s ability to learn and remember?”</i>.
             After examining the pre-sleep and post-sleep performance of SIESTA on ImageNet-1K,
             we see that the performance of SIESTA after sleep is consistently higher than before sleep for all increments.
@@ -284,8 +362,8 @@
         <h2 class="title is-3">Impact of Sleep Length</h2>
         <div class="columns is-centered">
           <div class="column content">
-            <p>
-              We study the impact of sleep length on SIESTA’s performance by varying the number of updates (m) 
+            <p align="justify">
+              We study the impact of sleep length by varying the number of updates (m) 
               during each sleep period, where SIESTA slept every 100 classes. We observe that as sleep length 
               increases, SIESTA’s performance also increases; however, as the sleep length increases, SIESTA 
               requires more updates, so we must strike a balance between accuracy and efficiency.
@@ -304,28 +382,25 @@
     <!-- Concurrent Work. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Criteria for Efficient CL</h2>
+        <h2 class="title is-3">Criteria for An Efficient Continual Learner</h2>
 
         <div class="content has-text-justified">
           <p>
-            We argue that a continual learning algorithm should have the following properties:
-          </p>
-            1. It should be capable of online learning and inference in a compute and memory constrained environment
+            We argue that an ideal continual learner should have the following characteristics:
           <p>
-            2. It should rival (or exceed) an offline learner, regardless of the structure of the training data stream
-          </p>
+            1. It should be capable of online learning and inference in a compute and memory constrained environment.
           <p>
-            3. It should be significantly more computationally efficient than training from scratch
-          </p>
+            2. It should rival (or exceed) an offline learner, regardless of the structure of the training data stream.
+          <p>
+            3. It should be significantly more computationally efficient than training from scratch.
           <p>
             4. It should make no additional assumptions that constrain the supervised learning task, e.g., using task labels during inference.
-          </p>
           <p>
-            There are several other criteria discussed in another paper. 
+            <!--There are several other criteria discussed in another paper.
             Check out <a href="https://arxiv.org/abs/2303.18171">How Efficient Are Today’s Continual Learning Algorithms?</a>.
           </p>
-          <p>
-            Our method, SIESTA, meets all these criteria and thus aligns with real-world applications.
+          <p>-->
+          <FONT COLOR="#000000"><b>Our method, SIESTA, meets all these criteria and thus aligns with real-world applications.<b>
           </p>
         </div>
       </div>
@@ -340,10 +415,13 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{harun2023siesta,
-  author    = {Harun, Md Yousuf and Gallardo, Jhair and Hayes, Tyler L and Kemker, Ronald and Kanan, Christopher},
+  author    = {Md Yousuf Harun and Jhair Gallardo and Tyler L Hayes and Ronald Kemker and Christopher Kanan},
   title     = {SIESTA: Efficient Online Continual Learning with Sleep},
-  journal   = {arXiv preprint arXiv:2303.10725},
+  journal   = {Transactions on Machine Learning Research},
+  issn      = {2835-8856},
   year      = {2023},
+  url       = {https://openreview.net/forum?id=MqDVlBWRRV},
+  note      = {}
 }</code></pre>
   </div>
 </section>
