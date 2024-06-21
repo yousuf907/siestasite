@@ -51,17 +51,22 @@
           <h1 class="title is-1 publication-title">SIESTA: Efficient Online Continual Learning with Sleep</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              Md Yousuf Harun<sup>1*</sup>,</span>
+              <a href="https://yousuf907.github.io">Md Yousuf Harun</a><sup>1*</sup>,</span>
+             <!-- Md Yousuf Harun<sup>1*</sup>,</span>-->
             <span class="author-block">
-              Jhair Gallardo<sup>1*</sup>,</span>
+              <a href="https://jhairgallardo.github.io">Jhair Gallardo</a><sup>1*</sup>,</span>
+              <!--Jhair Gallardo<sup>1*</sup>,</span>-->
             <span class="author-block">
-              Tyler L. Hayes<sup>1&#8224;</sup>,
+              <a href="https://tyler-hayes.github.io">Tyler L. Hayes</a><sup>1&#8224;</sup>,</span>
+              <!--Tyler L. Hayes<sup>1&#8224;</sup>,-->
             </span>
             <span class="author-block">
-              Ronald Kemker<sup>2</sup>,
+              <a href="https://www.linkedin.com/in/ronald-kemker">Ronald Kemker</a><sup>2</sup>,</span>
+              <!--Ronald Kemker<sup>2</sup>,-->
             </span>
             <span class="author-block">
-              Christopher Kanan<sup>3</sup>
+              <a href="https://chriskanan.com">Christopher Kanan</a><sup>3</sup></span>
+              <!--Christopher Kanan<sup>3</sup>-->
             </span>
           </div>
 
@@ -73,7 +78,7 @@
 
           <div class="column has-text-centered">
             <p>
-              [* denotes Equal contribution and &dagger; conveys Now at NAVER LABS Europe]
+              [* denotes equal contribution and &dagger; conveys now at NAVER LABS Europe]
             </p>
           </div>
 
@@ -97,6 +102,16 @@
                       <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
+                  </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/fbaqINofHnw"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
                   </a>
               </span>
             </div>
@@ -155,14 +170,15 @@
 </section>
 
 
-<section class="hero teaser">
+<section class="section">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-      <h2 class="title is-3">SIESTA Outperforms Prior Arts on ImageNet-1K Dataset</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+      <h2 class="title is-3">SIESTA Outperforms Prior Arts on ImageNet-1K</h2>
       <img src="./static/images/siesta_barplot_updated2.png"
           class="interpolation-image"
           alt="Interpolation end reference image."/>
-      <h2 class="subtitle has-text-centered">    
+      <h2 class="subtitle has-text-justified">    
         <FONT COLOR="#d55e00"><b>SIESTA requires 7x-60x fewer updates, 10x less memory, 2x-20x fewer parameters than other methods.
         SIESTA requires only 1.9 hours to learn full ImageNet-1K whereas other methods require 
         many hours or even days on the same hardware!</b></FONT>
@@ -290,14 +306,15 @@
         <!--/ Matting. -->
 
 
-<section class="hero teaser">
+<section class="section">
   <div class="container is-max-desktop">
-    <div class="hero-body">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
       <h2 class="title is-3">Online Updates with Offline Consolidation</h2>
       <img src="./static/images/Paradigm_siesta.png"
           class="interpolation-image"
           alt="Interpolation end reference image."/>
-      <h2 class="subtitle has-text-centered">       
+      <h2 class="subtitle has-text-justified">       
         An illustration of <FONT COLOR="#0072b2"><b><i>online updates with offline consolidation</i></b></FONT> paradigm. 
         While awake, agent performs online learning and while asleep, it performs computationally constrained offline learning. 
         This wake/sleep cycles oscillate. Thus, proposed paradigm combines two existing paradigms: class incremental 
@@ -308,16 +325,17 @@
 </section>
 
 
-<section class="hero teaser">
+<section class="section">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-      <h2 class="title is-3">How Does SIESTA Algorithm Work?</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+      <h2 class="title is-3">How Does SIESTA Work?</h2>
       <img src="./static/images/siesta.png"
           class="interpolation-image"
           alt="Interpolation end reference image."/>
-      <h2 class="subtitle has-text-centered">
+      <h2 class="subtitle has-text-justified">
         <!--<span class="dnerf">SIESTA</span>-->
-        A high-level overview of SIESTA. During the <FONT COLOR="#0072b2"><b><i>Wake Phase</i></b></FONT>, 
+        <FONT COLOR="#000000"><b>A high-level overview of SIESTA.</b> During the <FONT COLOR="#0072b2"><b><i>Wake Phase</i></b></FONT>, 
         it transforms raw inputs into intermediate feature representations using network H. 
         The inputs are then compressed with tensor quantization and cached. Then, weights 
         belonging to recently seen classes in network F are updated with a running class mean using the output 
@@ -407,6 +425,16 @@
     </div>
     <!--/ Concurrent Work. -->
 
+  </div>
+</section>
+
+
+<section class="section" id="NEWS">
+  <div class="container is-max-desktop content">
+    <h2 class="title">NEWS</h2>
+    <p>
+      SIESTA has been accepted at the journal track of Conference on Lifelong Learning Agents (CoLLAs), 2024 &#x1F389
+    </p>
   </div>
 </section>
 
