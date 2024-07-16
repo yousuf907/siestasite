@@ -114,6 +114,16 @@
                   <span>Video</span>
                   </a>
               </span>
+              <!-- Poster Link. -->
+              <span class="link-block">
+                <a href="./static/images/Updated_Poster_SIESTA_CoLLAs_2024.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-image"></i>
+                  </span>
+                  <span>Poster</span>
+                  </a>
+              </span>
             </div>
 
           </div>
@@ -195,11 +205,11 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">How Efficient is SIESTA?</h2>
         <p>
-          Our method, SIESTA, outperforms existing continual learning methods for class-incremental 
-          learning on ImageNet-1K while requiring fewer network updates and using fewer parameters, as 
-          denoted by circle size.
+          Our method, SIESTA, outperforms existing SOTA continual learning methods for class-incremental 
+          learning on challenging ImageNet-1K benchmark while requiring fewer network updates and using 
+          fewer parameters, as denoted by circle size.
         </p>
-          <img src="./static/images/summary_plot3.png"
+          <img src="./static/images/siesta_compute_efficiency.png"
           class="interpolation-image"
           alt="Interpolation end reference image."/>
       </div>
@@ -219,11 +229,11 @@
         <div class="content">
           <h2 class="title is-3">SIESTA Achieves <i>"Zero Forgetting"</i> - A Milestone</h2>
           <p align="justify">
-            SIESTA matches the performance of the offline model while outperforming existing state-of-the-art methods 
+            SIESTA matches the performance of the offline batch learner (upper bound) while outperforming existing state-of-the-art methods 
             e.g., ER, DER, and REMIND by large margins in continual learning on ImageNet-1K dataset.
             In the augmentation-free setting, Chochran’s Q test reveals that there is no significant difference among SIESTA’s 
-            final accuracy for the continual iid and class incremental settings compared to the offline learner (P = 0.08).
-            Therefore, SIESTA achieves “zero forgetting” by matching the performance of the offline model.
+            final accuracy for the continual iid and class incremental settings compared to the offline batch learner.
+            Therefore, SIESTA achieves “zero forgetting” by matching the performance of the offline batch learner.
           </p>
           <img src="./static/images/learning_curve_der_siesta2.png"
           class="interpolation-image"
@@ -238,15 +248,15 @@
         <div class="columns is-centered">
           <div class="column content">
             <p align="justify">
-              In general, iid (shuffled) orderings do not cause catastrophic forgetting; and 
-              at the other extreme, an ordering sorted by category causes severe catastrophic 
-              forgetting in conventional algorithms.
-              When switching from iid to the class incremental setting, existing methods e.g., 
+              In general, IID (independent and identically distributed) orderings do not cause catastrophic forgetting; and 
+              at the other extreme, an ordering sorted by category i.e., class incremental learning (CIL) 
+              causes severe catastrophic forgetting in conventional algorithms.
+              When switching from IID to the CIL setting, existing methods e.g., 
               ER and REMIND fail to maintain similar performance and intensify forgetting. 
-              In contrast, SIESTA maintains similar performance as offline learner and achieve 
+              In contrast, SIESTA maintains similar performance as offline batch learner and achieve 
               "zero forgetting" in both settings, demonstrating its robustness to data ordering.
             </p>
-            <img src="./static/images/class_incremental_vs_iid.png"
+            <img src="./static/images/cil_vs_iid_bar_plot.png"
           class="interpolation-image"
           alt="Interpolation end reference image."/>
           </div>
@@ -268,13 +278,16 @@
             <div class="content">
               <h2 class="title is-3">SIESTA is Performant on Four Benchmark Datasets</h2>
               <p align="justify">
-                SIESTA outperforms state-of-the-art online continual leanring method, REMIND on four 
-                benchmark datasets. SIESTA learns the large-scale ImageNet-1K dataset (1.2M training 
-                samples) 3.4x faster than REMIND on the same hardware. Moreover, SIESTA provides a 4.4x 
+                SIESTA outperforms state-of-the-art online continual leanring method, REMIND in class incremental learning 
+                on four benchmark datasets. SIESTA learns the large-scale ImageNet-1K dataset (1.2M training 
+                samples) 3.4x faster than REMIND. Moreover, SIESTA provides a 4.4x 
                 speedup compared to REMIND to learn another large-scale dataset, Places365-Standard (1.8M 
-                training samples) using the same hardware.
+                training samples). 
+                Since real-world data distribution is often long-tailed (LT) and imbalanced, we investigate the robustness 
+                of SIESTA and REMIND to LT data distribution using Places365-LT dataset. 
+                SIESTA outperforms REMIND on Places365-LT, demnostrating greater robustness and applicability.
               </p>
-              <img src="./static/images/siesta_barplot.png"
+              <img src="./static/images/siesta_vs_remind_bar_plot.png"
               class="interpolation-image"
               alt="Interpolation end reference image."/>
             </div>
@@ -291,8 +304,8 @@
                   In real-world settings, we could potentially have an infinitely long (never ending) data stream, 
                   which would be larger than ImageNet-1K, raising the question:<i>how well do CL models computationally 
                   scale to larger datasets?</i>-->
-                  As size of dataset grows, the gap in GFLOPS between SIESTA and existing methods 
-                  grows significantly. It is evident that SIESTA becomes far more efficient than others 
+                  As size of the dataset grows, the gap in GFLOPS (Giga floating-point operations per second) between SIESTA and existing methods 
+                  grows significantly. It is evident that SIESTA becomes far more compute-efficient than others 
                   in large-scale dataset regime.
                 </p>
                 <img src="./static/images/plot_flops_comp.png"
@@ -316,7 +329,7 @@
           alt="Interpolation end reference image."/>
       <h2 class="subtitle has-text-justified">       
         An illustration of <FONT COLOR="#0072b2"><b><i>online updates with offline consolidation</i></b></FONT> paradigm. 
-        While awake, agent performs online learning and while asleep, it performs computationally constrained offline learning. 
+        While awake <i class="fas fa-clock"></i>, agent performs online learning and while asleep <i class="fas fa-bed"></i>, it performs computationally constrained offline learning. 
         This wake/sleep cycles oscillate. Thus, proposed paradigm combines two existing paradigms: class incremental 
         batch learning and online learning. SIESTA operates in this framework.
       </h2>
@@ -335,13 +348,13 @@
           alt="Interpolation end reference image."/>
       <h2 class="subtitle has-text-justified">
         <!--<span class="dnerf">SIESTA</span>-->
-        <FONT COLOR="#000000"><b>A high-level overview of SIESTA.</b> During the <FONT COLOR="#0072b2"><b><i>Wake Phase</i></b></FONT>, 
-        it transforms raw inputs into intermediate feature representations using network H. 
+        <FONT COLOR="#000000"><b>A high-level overview of SIESTA.</b> During the <FONT COLOR="#0072b2"><b><i>Wake Phase</i></b></FONT> 
+        <i class="fas fa-sun"></i>, it transforms raw inputs into intermediate feature representations using network H. 
         The inputs are then compressed with tensor quantization and cached. Then, weights 
         belonging to recently seen classes in network F are updated with a running class mean using the output 
         vectors from G. Finally, inference is performed on the current sample. 
         
-        During the <FONT COLOR="#d55e00"><b><i>Sleep Phase</i></b></FONT>, a 
+        During the <FONT COLOR="#d55e00"><b><i>Sleep Phase</i></b></FONT> <i class="fas fa-moon"></i>, a 
         sampler uses a rehearsal policy to choose which examples should be reconstructed from the cached data 
         for each mini-batch. Then, networks G and F are updated with backpropagation in a supervised manner. 
         The wake/sleep cycles alternate.
